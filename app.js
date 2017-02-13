@@ -24,6 +24,10 @@ $(function(){
 	})
 	function meetupData(){
 		zip=$('#zip').val();
+		if(zip.length !== 5) {
+			alert('Please input a valid zip code')
+			return false
+		}
 		var url="https://api.meetup.com/2/open_events?callback=?"
 		var param={
 			key:'742104225795b17715d16c3866306d',
@@ -62,8 +66,6 @@ $(function(){
 					map.setCenter(centerPosition)
 				}
 
-
-				//console.log(moment(result.time)._d)
 				var contentString = '<div id="content"><p>Event name: '+result.name+'</p>'+'<p>Address: '+result.venue.address_1+', '+result.venue.city+'</p>'+'<p>'+result.description+'</p>'+'<a href='+result.event_url+'>Links</a></div>'
 				var LatLng = {
 					lat:lat,
@@ -93,10 +95,9 @@ $(function(){
 		})
 		
 		if(results.length==0){	
-			alert("No Pokemon meetup around")			
+			alert("No javascript meetup around")			
 		}
-		//clear search history 
-			
+		//clear search history 	
 
 	}
 
